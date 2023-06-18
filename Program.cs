@@ -1,27 +1,22 @@
-﻿int chislo = ReadInt("Введите число: ");
-int count = chislo.ToString().Length;
-Console.Write(ChiSlo(chislo, count));
-
-int ReadInt(string message)
+﻿internal class Program
+{
+private static void Main(string[] args)
+{
+int Prompt(string message)
 {
 Console.Write(message);
-return Convert.ToInt32(Console.ReadLine());
+string value = Console.ReadLine() ?? "";
+int chislo = Convert.ToInt32(value);
+return chislo;
 }
-
-int ChiSlo(int a, int b)
+int namba = Prompt("Введите число трехзначное");
+if (namba < 100 || namba >= 1000)
 {
-int chiselo = 0;
-if (b < 3)
-{
-Console.Write("Третьей цифры нет ---->");
+Console.WriteLine($"Введено не трехначное число");
+return;
 }
-else
-{
-int z = 1;
-for (int i = b; i > 3; i--)
-{
-z = z * 10;
+Console.WriteLine($"Введено число >{namba}<");
+int rezultat = namba / 10 % 10;
+Console.WriteLine($"Введено число >{rezultat}<");
 }
-}
-return chiselo;
 }
